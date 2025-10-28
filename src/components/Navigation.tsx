@@ -119,7 +119,7 @@ const Navigation = () => {
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
-  }, [navRef.current]);
+  }, []);
 
   if (isLoading) {
     return (
