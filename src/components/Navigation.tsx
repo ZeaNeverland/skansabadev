@@ -105,8 +105,8 @@ const Navigation = () => {
     const observed = navRef.current;
     if (!observed) return;
 
-    if ((window as any).ResizeObserver) {
-      const ro = new (window as any).ResizeObserver(() => {
+    if (typeof ResizeObserver !== 'undefined') {
+      const ro = new ResizeObserver(() => {
         setNavHeight(observed.offsetHeight || 0);
       });
       ro.observe(observed);
