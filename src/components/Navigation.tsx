@@ -105,8 +105,8 @@ const Navigation = () => {
     const observed = navRef.current;
     if (!observed) return;
 
-    if ((window as any).ResizeObserver) {
-      const ro = new (window as any).ResizeObserver(() => {
+    if (typeof ResizeObserver !== 'undefined') {
+      const ro = new ResizeObserver(() => {
         setNavHeight(observed.offsetHeight || 0);
       });
       ro.observe(observed);
@@ -119,7 +119,7 @@ const Navigation = () => {
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
-  }, [navRef.current]);
+  }, []);
 
   if (isLoading) {
     return (
